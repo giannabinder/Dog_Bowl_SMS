@@ -30,14 +30,17 @@ void loop() {
   //read the water level of the bowl  
   water = analogRead(capacitor);
 
-  //print to monitor for testing purposes
+  //print to monitor (testing)
   Serial.print("Moisture: ");
   Serial.println(water);
 
   //perform interrupt if no water
-  //blinks LEDS (testing)
-  //when this happens, a text should be sent out
   if (water >= 600){
+
+    //call the python code which will send a message
+    Serial.println("SMS");
+
+    //blinks LEDS (testing)
     for (int num = 0 ; num <= 10; num++){
       analogWrite(gLED, 100); 
       delay(100);                
@@ -49,12 +52,14 @@ void loop() {
       delay(100);                
       analogWrite(rLED, LOW);
     }
+
+
   }
 
   //don't perform an interrupt otherwise
-  //no text should be sent out
-  //here the all LEDs are on (testing)
   else{
+
+    //here the all LEDs are on (testing)
     analogWrite(gLED, 100);
     analogWrite(bLED, 100);
     analogWrite(rLED, 100);
@@ -63,7 +68,7 @@ void loop() {
     delay(2000);
   }
 
-  //to signify this round of reading is over, turn all LEDs off 
+  //to signify this round of reading is over, turn all LEDs off (testing)
   Serial.println("new round");
   analogWrite(gLED, 0);
   analogWrite(bLED, 0);
@@ -71,5 +76,5 @@ void loop() {
 
   //wait 2s before reading again (testing)
   //don't want to bombard the user with texts, realiztically, the wait time should be longer
-  delay(2000);                 
+  delay(4000);                 
 }

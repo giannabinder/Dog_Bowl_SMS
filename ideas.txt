@@ -1,0 +1,3 @@
+- implement a clock which will send a message to the user when the water bowl has not been refreshed in over 24hrs
+- set the board up with multiple bowls and send messages containing the name of the dog regarding which bowl needs updating
+- create a light up board which signifies if Creed was given breakfast and dinner, users will press button and led will turn on. The board will reset after 12am
