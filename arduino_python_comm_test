@@ -1,0 +1,24 @@
+import serial
+
+
+
+# make object of serial type to read from the port
+serial_info = serial.Serial('COM', 9600) # define correct COM port for testing
+
+
+# enter loop which monitors serial
+# set the loop conditions to "True" so it always runs
+while True:
+
+    # enter a new loop to analyze each serial line
+    while serial_info.inWaiting():
+
+        # read the serial line of the arduino
+        command = serial_info.readline().decode().strip()
+            # .readline() = reads line from arduino until /n
+            # .decode() = convert data read from line into a string type
+            # .strip() = removes whitespace before and after the line
+
+
+        if command == "FILL WATER BOWL":
+            print("Communcation received from board")
